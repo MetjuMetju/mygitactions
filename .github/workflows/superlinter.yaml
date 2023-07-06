@@ -1,0 +1,17 @@
+name: Super-Linter
+
+on: push						### workwlof Event
+
+jobs:
+  super-lint:						### workflow Job
+    name: Lint Code base
+    runs-on: ubuntu-latest				### workflow runs on parameter
+    steps:						### workflow Step
+      - name: Checkout code
+        uses: actions/checkout@v2			### workflow Action
+
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULTBRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
